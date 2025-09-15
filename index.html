@@ -4,585 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASB Valiant - Integrated Engineering and Energy Solutions Provider</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, #317956 0%, #378C61 100%);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #e11818;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .nav-menu a:hover {
-            color: #e11818;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #06790e 0%, #467217 50%, #529b0e 100%);
-            color: white;
-            padding: 150px 0 100px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>') repeat;
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) translateX(0); }
-            100% { transform: translateY(-100px) translateX(50px); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #ffffff;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .hero-tagline {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: #fb2424;
-            color: #ffffff;
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s;
-            animation: fadeInUp 1s ease 0.6s both;
-        }
-
-        .cta-button:hover {
-            background: #ff0000;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Section Styling */
-        .section {
-            padding: 80px 0;
-        }
-
-        .section:nth-child(even) {
-            background: #f8fafc;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #317956;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: #e11818;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .about-highlights {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        /* Vision Mission */
-        .vision-mission {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .vision, .mission {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .vision:hover, .mission:hover {
-            transform: translateY(-5px);
-        }
-
-        .vision h3, .mission h3 {
-            color: #317956;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Core Values */
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .value-item {
-            background: linear-gradient(135deg, #317956, #73a45e);
-            color: white;
-            padding: 2rem 1rem;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .value-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .value-item h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: #ffffff;
-        }
-
-        .value-item p {
-            font-size: 12px;
-            margin-bottom: 0.5rem;
-            color: #ffffff;
-        }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            border-left: 5px solid #e11818;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .service-card h3 {
-            color: #317956;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .service-card li {
-            margin-bottom: 0.5rem;
-            padding-left: 1rem;
-            position: relative;
-        }
-
-        .service-card li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #e11818;
-            font-weight: bold;
-        }
-
-        /* Why Partner Section */
-        .partnership-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .partnership-card {
-            background: linear-gradient(135deg, #317956, #73a45e);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .partnership-card:hover {
-            transform: scale(1.05);
-        }
-
-        .partnership-card h3 {
-            color: #ffffff;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Projects Section */
-        .projects-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .tab-button {
-            background: #e5e7eb;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-        }
-
-        .tab-button.active {
-            background: #317956;
-            color: white;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .project-header {
-            background: linear-gradient(135deg, #317956, #378C61);
-            color: white;
-            padding: 1.5rem;
-        }
-
-        .project-body {
-            padding: 1.5rem;
-        }
-
-        .project-status {
-            display: inline-block;
-            background: #10b981;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            margin-top: 0.5rem;
-        }
-
-        .project-status.ongoing {
-            background: #e11818;
-        }
-
-        .project-status.commissioning {
-            background: #378C61;
-        }
-
-        /* Partners Section */
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .partner-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .partner-card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Contact Section */
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .contact-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .contact-card h3 {
-            color: #317956;
-            margin-bottom: 1rem;
-        }
-
-        .contact-card a {
-            color: #317956;
-            text-decoration: none;
-        }
-
-        .contact-card a:hover {
-            color: #078111;
-        }
-
-        /* Footer */
-        .footer {
-            background: #317956;
-            color: white;
-            padding: 3rem 0 1rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            color: #ffffff;
-            margin-bottom: 1rem;
-        }
-
-        .footer-section a {
-            color: #e5e7eb;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section a:hover {
-            color: #e11818;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #374151;
-            padding-top: 1rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-menu {
-                position: fixed;
-                left: -100%;
-                top: 70px;
-                flex-direction: column;
-                background-color: #078111;
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                padding: 2rem 0;
-            }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-tagline {
-                font-size: 1.5rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .vision-mission {
-                grid-template-columns: 1fr;
-            }
-
-            .values-grid {
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            }
-
-            .partnership-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero {
-                padding: 120px 0 60px;
-            }
-
-            .section {
-                padding: 60px 0;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .service-card, .project-card {
-                margin: 0 10px;
-            }
-        }
-
-        /* Animation classes */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.6s ease;
-        }
-
-        .animate-on-scroll.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Utility classes */
-        .text-center { text-align: center; }
-        .mb-2 { margin-bottom: 1rem; }
-        .mb-3 { margin-bottom: 1.5rem; }
-        .hidden { display: none; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Header -->
@@ -595,7 +17,9 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#partners">Partners</a></li>
+                <li><a href="#careers">Careers</a></li>
                 <li><a href="#contact">Contact</a></li>
+
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -605,15 +29,96 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Background Video -->
     <section id="home" class="hero">
+        <!-- Background Video -->
+        <div class="video-background">
+            <video id="hero-video" autoplay muted loop playsinline>
+                <source src="images/intro.mp4" type="video/mp4">
+                <source src="videos/asb-valiant-intro.webm" type="video/webm">
+                <!-- Fallback background image if video doesn't load -->
+            </video>
+            <!-- Video overlay for better text readability -->
+            <div class="video-overlay"></div>
+        </div>
+        
+        <!-- Hero Content Over Video -->
         <div class="hero-content container">
             <h1>ASB VALIANT</h1>
             <div class="hero-subtitle">Integrated Engineering and Energy Solutions Provider</div>
             <div class="hero-tagline">Powering Growth Across Africa</div>
+            
+            <!-- Video Controls -->
+            <!-- <div class="video-controls">
+                <button id="video-toggle" class="video-control-btn" onclick="toggleVideo()">
+                    <span id="video-icon">⏸️</span> <span id="video-text">Pause Video</span>
+                </button>
+                <button id="video-sound" class="video-control-btn" onclick="toggleSound()">
+                    <span id="sound-icon">🔇</span> <span id="sound-text">Unmute</span>
+                </button>
+            </div> -->
+            
             <a href="#about" class="cta-button">Discover Our Solutions</a>
         </div>
     </section>
+
+    <!-- Statistics Section -->
+    <!-- <section class="section" style="background: linear-gradient(135deg, #317956, #378C61); color: white;">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Proven Track Record, Continental Reach</h2>
+            <div class="stats-grid animate-on-scroll">
+                <div class="stat-item">
+                    <h3>18+</h3>
+                    <p>Major energy and infrastructure projects delivered across West and Central Africa</p>
+                </div>
+                <div class="stat-item">
+                    <h3>180MW+</h3>
+                    <p>Total power generation capacity deployed</p>
+                </div>
+                <div class="stat-item">
+                    <h3>5MW - 35MW</h3>
+                    <p>Project range from captive systems to tri-fuel power plants</p>
+                </div>
+                <div class="stat-item">
+                    <h3>6+</h3>
+                    <p>Turnkey solutions executed with precision</p>
+                </div>
+            </div>
+            
+            <div class="feature-highlights animate-on-scroll" style="margin-top: 4rem;">
+                <div class="highlight-card">
+                    <h3>Engineering at Scale, Built for Complexity</h3>
+                    <p>6+ turnkey solutions executed with precision, backed by 100% global OEM partnerships</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>Certified. Trusted. Field-Tested.</h3>
+                    <p>ISO 9001 • ISO 14001 • ISO 45001 Certified<br>Multi-sector EPC delivery underpinned by technical excellence</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>Beyond Delivery. Committed to Lifelong Value.</h3>
+                    <p>We offer OEM-backed maintenance, performance optimisation, and lasting reliability</p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Corporate Video Section -->
+    <!-- <section class="section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Discover ASB Valiant</h2>
+            <div class="animate-on-scroll" style="text-align: center;">
+                <div style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    <div class="image-container" style="height: 400px; margin-bottom: 2rem;">
+                        <img src="path/to/corporate-video-thumbnail.jpg" alt="Corporate Introduction Video" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>Corporate Introduction Video<br><small>Click to play</small></p>
+                        </div>
+                    </div>
+                    <p style="font-size: 1.2rem; color: #666;">Watch our corporate introduction video to learn more about our journey, capabilities, and commitment to powering Africa's growth.</p>
+                </div>
+            </div>
+        </div>
+    </section> -->
 
     <!-- About Section -->
     <section id="about" class="section">
@@ -628,8 +133,16 @@
                     <p>For several years, we have demonstrated dauntless commitment to solve Africa's changing energy needs by serving our customers and enabling them to build a better future for their consumers and local communities.</p>
                 </div>
                 <div class="about-highlights">
+                    <div class="image-container foundation-image">
+                        <img src="images/about.jpg" alt="Our Foundation" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>Our Foundation Image<br><small>Building sustainable communities</small></p>
+                        </div>
+                    </div>
                     <h3>Our Foundation</h3>
-                    <p>We are known for our challenging spirit. We are recognized for our reliability, technical know-how and operational excellence, achieved through the seamless integration of three pillars:</p>
+                    <p>We are known for our challenging spirit. 
+                        We are recognized for our reliability, technical know-how and operational excellence, achieved through the seamless integration of 
+                        three pillars on which our organization is built:</p>
                     <ul>
                         <li><strong>People:</strong> Highly capable, experienced and unified in their passion</li>
                         <li><strong>Products:</strong> Cutting edge and cost-effective solutions</li>
@@ -641,10 +154,23 @@
             <!-- Vision & Mission -->
             <div class="vision-mission animate-on-scroll">
                 <div class="vision">
+
+                    <div class="image-container vision-mission-image">
+                        <img src="path/to/vision-image.jpg" alt="Our Vision" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>Vision Image</p>
+                        </div>
+                    </div>
                     <h3>Our Vision</h3>
                     <p>To become a leading EPC and Integrated Energy Solutions provider.</p>
                 </div>
                 <div class="mission">
+                    <div class="image-container vision-mission-image">
+                        <img src="path/to/mission-image.jpg" alt="Our Mission" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>Mission Image</p>
+                        </div>
+                    </div>
                     <h3>Our Mission</h3>
                     <p>To provide sustainable, value added, cost effective EPC, MEP and Integrated Energy Solutions to businesses and communities.</p>
                 </div>
@@ -655,26 +181,62 @@
                 <h3 class="text-center mb-3" style="color: #317956; font-size: 2rem;">Core Values - ERIIPA</h3>
                 <div class="values-grid">
                     <div class="value-item">
+                        <div class="image-container value-image">
+                            <img src="path/to/excellence-icon.jpg" alt="Excellence" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="image-placeholder" style="display: none;">
+                                <p>Excellence</p>
+                            </div>
+                        </div>
                         <h4>Excellence</h4>
                         <p>Striving for the highest standards in everything we do</p>
                     </div>
                     <div class="value-item">
+                        <div class="image-container value-image">
+                            <img src="path/to/excellence-icon.jpg" alt="Excellence" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="image-placeholder" style="display: none;">
+                                <p>Excellence</p>
+                            </div>
+                        </div>
                         <h4>Resilience</h4>
                         <p>Overcoming challenges with determination and strength</p>
                     </div>
                     <div class="value-item">
+                        <div class="image-container value-image">
+                            <img src="path/to/excellence-icon.jpg" alt="Excellence" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="image-placeholder" style="display: none;">
+                                <p>Excellence</p>
+                            </div>
+                        </div>
                         <h4>Integrity</h4>
                         <p>Maintaining honesty and ethical principles</p>
                     </div>
                     <div class="value-item">
+                        <div class="image-container value-image">
+                            <img src="path/to/excellence-icon.jpg" alt="Excellence" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="image-placeholder" style="display: none;">
+                                <p>Excellence</p>
+                            </div>
+                        </div>
                         <h4>Innovation</h4>
                         <p>Embracing new ideas and creative solutions</p>
                     </div>
                     <div class="value-item">
+                        <div class="image-container value-image">
+                            <img src="path/to/excellence-icon.jpg" alt="Excellence" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="image-placeholder" style="display: none;">
+                                <p>Excellence</p>
+                            </div>
+                        </div>
                         <h4>Passion</h4>
                         <p>Bringing enthusiasm and dedication to our work</p>
                     </div>
                     <div class="value-item">
+                        <div class="image-container value-image">
+                            <img src="path/to/excellence-icon.jpg" alt="Excellence" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="image-placeholder" style="display: none;">
+                                <p>Excellence</p>
+                            </div>
+                        </div>
                         <h4>Accountability</h4>
                         <p>Taking responsibility for our actions and outcomes</p>
                     </div>
@@ -684,6 +246,8 @@
     </section>
 
     <!-- Services Section -->
+
+    
     <section id="services" class="section">
         <div class="container">
             <h2 class="section-title animate-on-scroll">What We Do</h2>
@@ -694,6 +258,12 @@
             <div class="services-grid animate-on-scroll">
                 <!-- Power Generation -->
                 <div class="service-card">
+                    <div class="image-container service-image">
+                        <img src="path/to/power-generation.jpg" alt="Power Generation" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>Power Generation<br><small>Service Image</small></p>
+                        </div>
+                    </div>
                     <h3>Power Generation Services</h3>
                     <p>Comprehensive power generation solutions from individual generating sets to complete, ready-to-run power plants.</p>
                     <ul>
@@ -706,6 +276,12 @@
 
                 <!-- Natural Gas Solutions -->
                 <div class="service-card">
+                    <div class="image-container service-image">
+                        <img src="path/to/power-generation.jpg" alt="Power Generation" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>Power Generation<br><small>Service Image</small></p>
+                        </div>
+                    </div>
                     <h3>Natural Gas Solutions</h3>
                     <p>Integrated solutions for natural gas conditioning and gas fuel treatment systems.</p>
                     <ul>
@@ -720,6 +296,12 @@
 
                 <!-- EPC Services -->
                 <div class="service-card">
+                    <div class="image-container service-image">
+                        <img src="path/to/power-generation.jpg" alt="Power Generation" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>Power Generation<br><small>Service Image</small></p>
+                        </div>
+                    </div>
                     <h3>EPC Services</h3>
                     <p>Holistic Energy solutions managing the entire project cycle from design to commissioning.</p>
                     <ul>
@@ -733,6 +315,12 @@
 
                 <!-- MEP Services -->
                 <div class="service-card">
+                    <div class="image-container service-image">
+                        <img src="path/to/power-generation.jpg" alt="Power Generation" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>Power Generation<br><small>Service Image</small></p>
+                        </div>
+                    </div>
                     <h3>MEP Services</h3>
                     <p>Comprehensive Mechanical, Electrical and Plumbing solutions for construction projects.</p>
                     <ul>
@@ -746,6 +334,12 @@
 
                 <!-- HVAC Services -->
                 <div class="service-card">
+                    <div class="image-container service-image">
+                        <img src="path/to/power-generation.jpg" alt="Power Generation" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>Power Generation<br><small>Service Image</small></p>
+                        </div>
+                    </div>
                     <h3>HVAC Engineering Services</h3>
                     <p>End-to-end HVAC solutions designed for optimal comfort and energy efficiency.</p>
                     <ul>
@@ -760,6 +354,12 @@
 
                 <!-- Additional Services -->
                 <div class="service-card">
+                    <div class="image-container service-image">
+                        <img src="path/to/power-generation.jpg" alt="Power Generation" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>Power Generation<br><small>Service Image</small></p>
+                        </div>
+                    </div>
                     <h3>Design & Consultancy</h3>
                     <p>Professional design, consultancy and project management services.</p>
                     <ul>
@@ -775,6 +375,12 @@
             <!-- Value Added Services -->
             <div class="animate-on-scroll" style="margin-top: 4rem;">
                 <h3 class="text-center mb-3" style="color: #317956; font-size: 2rem;">Value Added Services</h3>
+                <div class="image-container" style="height: 200px; margin-bottom: 2rem;">
+                    <img src="path/to/value-added-services.jpg" alt="Value Added Services" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="image-placeholder" style="display: none;">
+                        <p>Value Added Services<br><small>Operations & Maintenance</small></p>
+                    </div>
+                </div>
                 <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                     <p>As ASB Valiant strives to achieve the highest levels of customer satisfaction, we offer all relevant commissioning and support services to ensure the successful start-up and smooth running of our customers' plants.</p>
                     <br>
@@ -789,40 +395,80 @@
     <!-- Why Partner With Us -->
     <section class="section">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Why Partner With Us?</h2>
-            <div class="partnership-grid animate-on-scroll">
-                <div class="partnership-card">
-                    <h3>Character</h3>
-                    <p>We are a dedicated and skilled team, operating with passion, integrity and accountability to fulfill our mission. We are a "dauntless" tribe of consultants, engineers and construction workers who are driven by relentless commitment, courage and resilience to play a leading part in Africa's energy transformation.</p>
-                </div>
-                <div class="partnership-card">
-                    <h3>Competence</h3>
-                    <p>We are a project consulting and contracting company that provides value added advisory services and solutions to our clients. Our strong technical capability coupled with our world class products and robust project management procedures, enable us to deliver projects on time and in line with our clients' expectations.</p>
-                </div>
-                <div class="partnership-card">
-                    <h3>Commitment</h3>
-                    <p>We are committed to helping our customers win and build a better tomorrow for their consumers and communities. We do not stop until we deliver value; for our customers will judge us by what we finish, not by what we start.</p>
-                </div>
-            </div>
 
             <!-- Capabilities -->
-            <div class="animate-on-scroll" style="margin-top: 4rem;">
+            <div class="animate-on-scroll" style="margin-bottom: 4rem;">
                 <h3 class="text-center mb-3" style="color: #317956; font-size: 2rem;">Our Capabilities</h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                     <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <div class="image-container capability-image">
+                            <img src="path/to/consultancy.jpg" alt="Consultancy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="image-placeholder" style="display: none;">
+                                <p>Consultancy<br><small>Trusted Advisor</small></p>
+                            </div>
+                        </div>
                         <h4 style="color: #317956; margin-bottom: 1rem;">Consultancy</h4>
                         <p>Our ability to assess our customers' needs and solve their unique challenges with bespoke solutions has earned us the "trusted advisor" status with our customers.</p>
                     </div>
                     <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <div class="image-container capability-image">
+                            <img src="path/to/consultancy.jpg" alt="Consultancy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="image-placeholder" style="display: none;">
+                                <p>Consultancy<br><small>Trusted Advisor</small></p>
+                            </div>
+                        </div>
                         <h4 style="color: #317956; margin-bottom: 1rem;">Experts in Project Execution</h4>
                         <p>We continue to develop strong project management capabilities by regularly training our teams in international frameworks that enhance our service delivery.</p>
                     </div>
                     <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <div class="image-container capability-image">
+                            <img src="path/to/consultancy.jpg" alt="Consultancy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="image-placeholder" style="display: none;">
+                                <p>Consultancy<br><small>Trusted Advisor</small></p>
+                            </div>
+                        </div>
                         <h4 style="color: #317956; margin-bottom: 1rem;">Win-Win Partnerships</h4>
                         <p>We build strategic, long-term partnerships with global leaders to provide world-class products, services and support that give customers a competitive edge.</p>
                     </div>
                 </div>
             </div>
+
+
+            <h2 class="section-title animate-on-scroll">Why Partner With Us?</h2>
+            <div class="partnership-grid animate-on-scroll">
+                <div class="partnership-card">
+                    <div class="image-container" style="height: 120px; margin-bottom: 1rem;">
+                        <img src="path/to/character-image.jpg" alt="Character" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>Character</p>
+                        </div>
+                    </div>
+                    <h3>Character</h3>
+                    <p>We are a dedicated and skilled team, operating with passion, integrity and accountability to fulfill our mission. We are a "dauntless" tribe of consultants, engineers and construction workers who are driven by relentless commitment, courage and resilience to play a leading part in Africa's energy transformation.</p>
+                </div>
+                <div class="partnership-card">
+                    <div class="image-container" style="height: 120px; margin-bottom: 1rem;">
+                        <img src="path/to/character-image.jpg" alt="Character" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>Character</p>
+                        </div>
+                    </div>
+                    <h3>Competence</h3>
+                    <p>We are a project consulting and contracting company that provides value added advisory services and solutions to our clients. Our strong technical capability coupled with our world class products and robust project management procedures, enable us to deliver projects on time and in line with our clients' expectations.</p>
+                </div>
+                <div class="partnership-card">
+                    <div class="image-container" style="height: 120px; margin-bottom: 1rem;">
+                        <img src="path/to/character-image.jpg" alt="Character" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>Character</p>
+                        </div>
+                    </div>
+                    <h3>Commitment</h3>
+                    <p>We are committed to helping our customers win and build a better tomorrow for their consumers and communities. We do not stop until we deliver value; for our customers will judge us by what we finish, not by what we start.</p>
+                </div>
+            </div>
+
+            
         </div>
     </section>
 
@@ -840,6 +486,12 @@
             <!-- Completed Projects -->
             <div id="completed-projects" class="projects-grid animate-on-scroll">
                 <div class="project-card">
+                    <div class="image-container project-image">
+                        <img src="path/to/rccg-power-plant.jpg" alt="RCCG Power Plant" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>RCCG 25MW Power Plant<br><small>Project Image</small></p>
+                        </div>
+                    </div>
                     <div class="project-header">
                         <h3>RCCG 25MW Power Plant</h3>
                         <p><strong>Client:</strong> RCCG Redemption Camp</p>
@@ -853,6 +505,12 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="image-container project-image">
+                        <img src="path/to/rccg-power-plant.jpg" alt="RCCG Power Plant" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>RCCG 25MW Power Plant<br><small>Project Image</small></p>
+                        </div>
+                    </div>
                     <div class="project-header">
                         <h3>Dangote Cement Plc 13.02MW</h3>
                         <p><strong>Client:</strong> Dangote Cement Plc</p>
@@ -866,6 +524,12 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="image-container project-image">
+                        <img src="path/to/rccg-power-plant.jpg" alt="RCCG Power Plant" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>RCCG 25MW Power Plant<br><small>Project Image</small></p>
+                        </div>
+                    </div>
                     <div class="project-header">
                         <h3>SMC 15MW Power Plant</h3>
                         <p><strong>Client:</strong> SMC Steel Plant</p>
@@ -879,6 +543,12 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="image-container project-image">
+                        <img src="path/to/rccg-power-plant.jpg" alt="RCCG Power Plant" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>RCCG 25MW Power Plant<br><small>Project Image</small></p>
+                        </div>
+                    </div>
                     <div class="project-header">
                         <h3>ODSG 30MW Power Plant</h3>
                         <p><strong>Client:</strong> Ondo State Government</p>
@@ -892,6 +562,12 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="image-container project-image">
+                        <img src="path/to/rccg-power-plant.jpg" alt="RCCG Power Plant" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>RCCG 25MW Power Plant<br><small>Project Image</small></p>
+                        </div>
+                    </div>
                     <div class="project-header">
                         <h3>Shoreline - Lafarge 16.50 MW</h3>
                         <p><strong>Client:</strong> Lafarge Cement Plant</p>
@@ -905,6 +581,12 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="image-container project-image">
+                        <img src="path/to/rccg-power-plant.jpg" alt="RCCG Power Plant" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>RCCG 25MW Power Plant<br><small>Project Image</small></p>
+                        </div>
+                    </div>
                     <div class="project-header">
                         <h3>LFCWW 5.67MW Power Plant</h3>
                         <p><strong>Client:</strong> Living Faith Church Worldwide</p>
@@ -916,11 +598,14 @@
                         <span class="project-status">Completed</span>
                     </div>
                 </div>
-            </div>
 
-            <!-- Ongoing Projects -->
-            <div id="ongoing-projects" class="projects-grid animate-on-scroll hidden">
                 <div class="project-card">
+                    <div class="image-container project-image">
+                        <img src="path/to/rccg-power-plant.jpg" alt="RCCG Power Plant" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>RCCG 25MW Power Plant<br><small>Project Image</small></p>
+                        </div>
+                    </div>
                     <div class="project-header">
                         <h3>First Power 13.02MW</h3>
                         <p><strong>Client:</strong> First Power Limited</p>
@@ -932,7 +617,20 @@
                     </div>
                 </div>
 
+                
+            </div>
+
+            <!-- Ongoing Projects -->
+            <div id="ongoing-projects" class="projects-grid animate-on-scroll hidden">
+                
+
                 <div class="project-card">
+                    <div class="image-container project-image">
+                        <img src="path/to/rccg-power-plant.jpg" alt="RCCG Power Plant" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>RCCG 25MW Power Plant<br><small>Project Image</small></p>
+                        </div>
+                    </div>
                     <div class="project-header">
                         <h3>MEP/HVAC Installation Works</h3>
                         <p><strong>Client:</strong> Trustfund Pensions Limited</p>
@@ -946,6 +644,12 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="image-container project-image">
+                        <img src="path/to/rccg-power-plant.jpg" alt="RCCG Power Plant" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>RCCG 25MW Power Plant<br><small>Project Image</small></p>
+                        </div>
+                    </div>
                     <div class="project-header">
                         <h3>DENALI/SNE 35MW HFO Power Plant</h3>
                         <p><strong>Client:</strong> Denali Investment / Societe Nationale du electrite</p>
@@ -958,6 +662,12 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="image-container project-image">
+                        <img src="path/to/rccg-power-plant.jpg" alt="RCCG Power Plant" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>RCCG 25MW Power Plant<br><small>Project Image</small></p>
+                        </div>
+                    </div>
                     <div class="project-header">
                         <h3>ALARO Captive Independent Power Plant</h3>
                         <p><strong>Client:</strong> Rendeavour</p>
@@ -971,6 +681,12 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="image-container project-image">
+                        <img src="path/to/rccg-power-plant.jpg" alt="RCCG Power Plant" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>RCCG 25MW Power Plant<br><small>Project Image</small></p>
+                        </div>
+                    </div>
                     <div class="project-header">
                         <h3>Captive Independent Power Plant</h3>
                         <p><strong>Client:</strong> Afe Babalola University</p>
@@ -982,11 +698,18 @@
                         <span class="project-status ongoing">Ongoing</span>
                     </div>
                 </div>
+                
             </div>
 
             <!-- Real Estate Projects -->
             <div id="real-estate-projects" class="projects-grid animate-on-scroll hidden">
                 <div class="project-card">
+                    <div class="image-container project-image">
+                        <img src="path/to/rccg-power-plant.jpg" alt="RCCG Power Plant" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>RCCG 25MW Power Plant<br><small>Project Image</small></p>
+                        </div>
+                    </div>
                     <div class="project-header">
                         <h3>Valiant Resort</h3>
                         <p><strong>Development Type:</strong> Resort & Recreation</p>
@@ -1000,6 +723,12 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="image-container project-image">
+                        <img src="path/to/rccg-power-plant.jpg" alt="RCCG Power Plant" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>RCCG 25MW Power Plant<br><small>Project Image</small></p>
+                        </div>
+                    </div>
                     <div class="project-header">
                         <h3>DIVINUS ESTATE</h3>
                         <p><strong>Development Type:</strong> Infrastructure Development</p>
@@ -1021,6 +750,13 @@
             <h2 class="section-title animate-on-scroll">Quality Health & Safety Management</h2>
             <div class="animate-on-scroll">
                 <div style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center;">
+                    
+                    <div class="image-container" style="height: 200px; margin: 0 auto 2rem; max-width: 400px;">
+                        <img src="path/to/safety-management.jpg" alt="Health & Safety Management" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>Health & Safety<br><small>ISO Certified</small></p>
+                        </div>
+                    </div>
                     <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">ASB Valiant is dedicated to providing services in the Energy and Engineering industrial sectors. We understand that our long term success is dependent on the implementation of safe practices, procedures and structures which will protect our people, customers, local communities and the environment.</p>
                     
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2rem 0;">
@@ -1054,20 +790,94 @@
 
             <div class="partners-grid animate-on-scroll">
                 <div class="partner-card">
-                    <h4 style="color: #317956; margin-bottom: 1rem;">CATERPILLAR</h4>
+                    <div class="image-container partner-image">
+                        <img src="path/to/caterpillar-logo.jpg" alt="Caterpillar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>CATERPILLAR</p>
+                        </div>
+                    </div>
+                    <h4 style="color: #317956; margin-bottom: 1rem;">SOCIAL TURBINES</h4>
                     <p>Global leader in construction and mining equipment, diesel and natural gas engines, industrial gas turbines and diesel-electric locomotives.</p>
                 </div>
                 <div class="partner-card">
-                    <h4 style="color: #317956; margin-bottom: 1rem;">BROAD</h4>
+                    <div class="image-container partner-image">
+                        <img src="path/to/caterpillar-logo.jpg" alt="Caterpillar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>CATERPILLAR</p>
+                        </div>
+                    </div>
+                    <h4 style="color: #317956; margin-bottom: 1rem;">OPRA TURBINES</h4>
                     <p>Specializing in non-electric chillers and air conditioning solutions for energy-efficient HVAC systems.</p>
                 </div>
                 <div class="partner-card">
-                    <h4 style="color: #317956; margin-bottom: 1rem;">RHOSS</h4>
+                    <div class="image-container partner-image">
+                        <img src="path/to/caterpillar-logo.jpg" alt="Caterpillar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>CATERPILLAR</p>
+                        </div>
+                    </div>
+                    <h4 style="color: #317956; margin-bottom: 1rem;">FLEX ENERGY SOLUTIONS</h4>
                     <p>Italian manufacturer of air handling units, chillers, and complete HVAC solutions for commercial and industrial applications.</p>
                 </div>
                 <div class="partner-card">
-                    <h4 style="color: #317956; margin-bottom: 1rem;">ANTONOV</h4>
+                    <div class="image-container partner-image">
+                        <img src="path/to/caterpillar-logo.jpg" alt="Caterpillar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>CATERPILLAR</p>
+                        </div>
+                    </div>
+                    <h4 style="color: #317956; margin-bottom: 1rem;">ENERPROJECT</h4>
                     <p>Strategic airlift cargo aircraft partner for delivery of transformers and heavy duty cargo to meet project deadlines.</p>
+                </div>
+                <div class="partner-card">
+                    <div class="image-container partner-image">
+                        <img src="path/to/caterpillar-logo.jpg" alt="Caterpillar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>CATERPILLAR</p>
+                        </div>
+                    </div>
+                    <h4 style="color: #317956; margin-bottom: 1rem;">GALILEO</h4>
+                    <p>An Italian company specializing in vacuum, leak detection, refrigerant charging machines and other testing/equipment for the refrigeration and HVAC industry.</p>
+                </div>
+                <div class="partner-card">
+                    <div class="image-container partner-image">
+                        <img src="path/to/caterpillar-logo.jpg" alt="Caterpillar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>CATERPILLAR</p>
+                        </div>
+                    </div>
+                    <h4 style="color: #317956; margin-bottom: 1rem;">RHOSS</h4>
+                    <p>Italian company (since 1968) that designs and produces air-conditioning systems, air handling units, chillers, heat pumps, fan coils, and indoor air quality solutions.</p>
+                </div>
+                <div class="partner-card">
+                    <div class="image-container partner-image">
+                        <img src="path/to/caterpillar-logo.jpg" alt="Caterpillar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>CATERPILLAR</p>
+                        </div>
+                    </div>
+                    <h4 style="color: #317956; margin-bottom: 1rem;">BROAD GROUP</h4>
+                    <p>Chinese enterprise known for manufacturing central air conditioning and absorption chillers — including non-electric chillers powered by natural gas or waste heat.</p>
+                </div>
+                <div class="partner-card">
+                    <div class="image-container partner-image">
+                        <img src="path/to/caterpillar-logo.jpg" alt="Caterpillar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>CATERPILLAR</p>
+                        </div>
+                    </div>
+                    <h4 style="color: #317956; margin-bottom: 1rem;">KLIMA OPREMA</h4>
+                    <p>Based in Croatia, Klima Oprema delivers cleanroom systems, ventilation, and air-conditioning equipment.</p>
+                </div>
+                <div class="partner-card">
+                    <div class="image-container partner-image">
+                        <img src="path/to/caterpillar-logo.jpg" alt="Caterpillar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>CATERPILLAR</p>
+                        </div>
+                    </div>
+                    <h4 style="color: #317956; margin-bottom: 1rem;">+GF+</h4>
+                    <p>Swiss company with over 200 years of history. +GF+ provides piping systems, fittings, valves, and solutions for safe transport of liquids and gases.</p>
                 </div>
             </div>
 
@@ -1084,19 +894,181 @@
         </div>
     </section>
 
-    <!-- Our Team Section -->
+    <!-- Subsidiaries Section -->
     <section class="section">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Our Team</h2>
-            <div class="animate-on-scroll">
-                <div style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center;">
-                    <p style="font-size: 1.2rem; line-height: 1.8; color: #078111;">ASB Valiant has to its credit a well-trained and articulate team of engineers, supported by a pool of technical and semi-skilled personnel.</p>
-                    <br>
-                    <p style="font-size: 1.1rem; line-height: 1.8;">Our People are highly capable, experienced and unified in their passion to make a positive impact and provide high levels of customer satisfaction. We have partnered with global industry leading manufacturers to deliver highly efficient, cutting edge and cost-effective products and services to our customers, engineering new possibilities and fuelling growth.</p>
+            <h2 class="section-title animate-on-scroll">Our Subsidiaries</h2>
+            <div class="subsidiaries-grid animate-on-scroll">
+                <div class="subsidiary-card">
+                    <div class="image-container subsidiary-image">
+                        <img src="path/to/valiant-power-logo.jpg" alt="Valiant Power Solutions" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>Valiant Power Solutions</p>
+                        </div>
+                    </div>
+                    <h3>Valiant Power Solutions</h3>
+                    <p>Specialized power generation and energy solutions for industrial and commercial clients across Africa.</p>
+                    <a href="#" class="subsidiary-link">Learn More</a>
+                </div>
+                <div class="subsidiary-card">
+                    <div class="image-container subsidiary-image">
+                        <img src="path/to/valiant-real-estate-logo.jpg" alt="Valiant Real Estate Development" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>Valiant Real Estate</p>
+                        </div>
+                    </div>
+                    <h3>Valiant Real Estate Development</h3>
+                    <p>Comprehensive real estate development including Valiant Resort and Divinus Estate projects.</p>
+                    <a href="#" class="subsidiary-link">Learn More</a>
+                </div>
+                <div class="subsidiary-card">
+                    <div class="image-container subsidiary-image">
+                        <img src="path/to/valiant-technical-logo.jpg" alt="Valiant Technical Services" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <p>Valiant Technical Services</p>
+                        </div>
+                    </div>
+                    <h3>Valiant Technical Services</h3>
+                    <p>Technical support, maintenance, and after-sales services for all energy and engineering solutions.</p>
+                    <a href="#" class="subsidiary-link">Learn More</a>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Our Team Section -->
+    <section class="section">
+    <div class="container">
+        <h2 class="section-title animate-on-scroll">Our Team</h2>
+        <div class="animate-on-scroll">
+        <div
+            style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center;"
+        >
+            <!-- GRID WRAPPER -->
+            <div class="team-grid">
+            <div class="image-container team-image">
+                <img
+                src="w_images/team1.jpeg"
+                alt="Our Team"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                />
+                <div class="image-placeholder" style="display: none;">
+                <p>
+                    Our Team<br /><small
+                    >Skilled Engineers & Technical Personnel</small
+                    >
+                </p>
+                </div>
+            </div>
+
+            <div class="image-container team-image">
+                <img
+                src="w_images/team2.jpeg"
+                alt="Our Team"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                />
+                <div class="image-placeholder" style="display: none;">
+                <p>
+                    Our Team<br /><small
+                    >Skilled Engineers & Technical Personnel</small
+                    >
+                </p>
+                </div>
+            </div>
+
+            <div class="image-container team-image">
+                <img
+                src="w_images/team3.jpeg"
+                alt="Our Team"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                />
+                <div class="image-placeholder" style="display: none;">
+                <p>
+                    Our Team<br /><small
+                    >Skilled Engineers & Technical Personnel</small
+                    >
+                </p>
+                </div>
+            </div>
+
+            <div class="image-container team-image">
+                <img
+                src="w_images/team4.jpeg"
+                alt="Our Team"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                />
+                <div class="image-placeholder" style="display: none;">
+                <p>
+                    Our Team<br /><small
+                    >Skilled Engineers & Technical Personnel</small
+                    >
+                </p>
+                </div>
+            </div>
+            </div>
+
+            <p
+            style="font-size: 1.2rem; line-height: 1.8; color: #078111; margin-top:2rem;"
+            >
+            ASB Valiant has to its credit a well-trained and articulate team of
+            engineers, supported by a pool of technical and semi-skilled
+            personnel.
+            </p>
+            <br />
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+            Our People are highly capable, experienced and unified in their
+            passion to make a positive impact and provide high levels of customer
+            satisfaction. We have partnered with global industry leading
+            manufacturers to deliver highly efficient, cutting edge and
+            cost-effective products and services to our customers, engineering new
+            possibilities and fuelling growth.
+            </p>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- Careers Section -->
+    <section id="careers" class="section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Careers</h2>
+            
+            <div class="animate-on-scroll">
+                <h3 class="text-center mb-3" style="color: #317956; font-size: 2rem;">Why Work with ASB Valiant?</h3>
+                <div class="careers-benefits">
+                    <div class="benefit-card">
+                        <h4>Challenging and Impactful Projects</h4>
+                        <p>Work on continent-shaping energy infrastructure projects that make a real difference</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h4>Training with Global OEMs</h4>
+                        <p>Access world-class training programs with our international technology partners</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h4>Safe, Inclusive Culture</h4>
+                        <p>Growth-driven work environment prioritizing safety and professional development</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h4>Competitive Benefits</h4>
+                        <p>Comprehensive compensation, health coverage, and project travel opportunities</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="animate-on-scroll" style="margin-top: 4rem;">
+                <h3 class="text-center mb-3" style="color: #317956; font-size: 2rem;">Early Career Opportunities</h3>
+                <div style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center;">
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem;">We welcome young professionals through our internship and graduate trainee programs designed to groom the next generation of African engineers and energy experts.</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 600px; margin: 0 auto;">
+                        <button class="apply-button">Apply Now</button>
+                        <button class="upload-cv-button">Upload CV</button>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
 
     <!-- Contact Section -->
     <section id="contact" class="section">
@@ -1190,21 +1162,27 @@
                     <a href="#services">HVAC Engineering</a>
                 </div>
                 <div class="footer-section">
+                    <h3>Subsidiaries</h3>
+                    <a href="#">Valiant Power Solutions</a>
+                    <a href="#">Valiant Real Estate</a>
+                    <a href="#">Valiant Technical Services</a>
+                </div>
+                <div class="footer-section">
                     <h3>Company</h3>
                     <a href="#about">About Us</a>
                     <a href="#projects">Projects</a>
                     <a href="#partners">Partners</a>
                     <a href="#contact">Contact</a>
                 </div>
-                <div class="footer-section">
+                <!-- <div class="footer-section">
                     <h3>Contact Info</h3>
                     <p>Plot 99 Ajose Adeogun Street<br>Victoria Island, Lagos – Nigeria</p>
                     <p>Phone: +234 816 973 8625</p>
                     <p>Email: info@asbvaliant.com</p>
-                </div>
+                </div> -->
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 ASB Valiant. All rights reserved. | Integrated Engineering and Energy Solutions Provider</p>
+                <p>&copy; 2007 ASB Valiant. All rights reserved. | Integrated Engineering and Energy Solutions Provider</p>
             </div>
         </div>
     </footer>
