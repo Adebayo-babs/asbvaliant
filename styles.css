@@ -247,7 +247,24 @@ body {
 }
 
 .partner-image {
-    height: 100px;
+    height: 120px; /* Increased height */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.partner-image img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain; /* This ensures the entire image is visible */
+    object-position: center;
 }
 
 .team-image {
